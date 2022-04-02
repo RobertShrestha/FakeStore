@@ -1,0 +1,19 @@
+//
+//  Debug.xcconfig
+//  FakeStore
+//
+//  Created by Robert Shrestha on 4/2/22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+// Server URL
+ROOT_URL = https:/$()/fakestoreapi.com
+
+// Keys
+API_KEY = ENTER_KEY_HERE
+
+// App Settings
+APP_NAME = News App
+APP_BUNDLE_ID = me.robert.newsapp
+APP_ICON = AppIcon
