@@ -27,15 +27,6 @@ class ProfileView: UIViewController, Storyboarded{
             .tap
             .subscribe(onNext: {
                 self.coordinator?.didFinishProfile()
-                #warning("Remove this")
-//                UserDefaultsConstants.idToken = ""
-//                DispatchQueue.main.async {
-//                    let navController = UINavigationController()
-//                    let newCoordinator = MainCoordinator(navigationController: navController)
-//                    newCoordinator.childCoordinators = []
-//                    newCoordinator.start()
-//                    self.view.window?.rootViewController = navController
-//                }
         }).disposed(by: disposeBag)
     }
 }

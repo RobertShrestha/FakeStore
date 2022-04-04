@@ -9,7 +9,7 @@ import Foundation
 
 protocol Storage {
     var products: [ProductModel] {get set}
-    func load() -> [ProductModel]
+    mutating func load() -> [ProductModel]
     mutating func remove(product: ProductModel)
     mutating func save(product: ProductModel)
     func isBookmarked(product: ProductModel) -> Bool
@@ -59,7 +59,7 @@ struct StorageClient {
         self.storage = storage
     }
 
-    func loadProducts() -> [ProductModel] {
+    mutating func loadProducts() -> [ProductModel] {
         return storage.load()
     }
     mutating func addArticle(with product: ProductModel) {

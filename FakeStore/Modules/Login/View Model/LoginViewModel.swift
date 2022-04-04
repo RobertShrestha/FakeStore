@@ -108,8 +108,6 @@ class LoginViewModel: LoginViewModelProtocol {
             _  = response.subscribe(onSuccess: { model in
                 print(model)
                 UserDefaultsConstants.idToken = model.token
-                #warning("Remove this")
-                print("the tokne is", UserDefaultsConstants.idToken)
                 self.goToDashboard.onNext(())
                 self.viewType?.hideProgressHud()
             }, onFailure: { error in
