@@ -23,8 +23,8 @@ class LoginViewModel: LoginViewModelProtocol {
     /// Count your data in model
     var count: Int = 0
 
-    var username = BehaviorRelay<String>(value: "johnd")
-    var password = BehaviorRelay<String>(value: "m38rmF$")
+    var username = BehaviorRelay<String>(value: "")
+    var password = BehaviorRelay<String>(value: "")
     var loginButtonTapped = PublishSubject<Void>()
     var validationError = PublishSubject<ValidationRegistrationSetupError>()
     var goToDashboard = PublishSubject<Void>()
