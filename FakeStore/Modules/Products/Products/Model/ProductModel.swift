@@ -11,14 +11,14 @@ struct ProductModel: Codable {
         let id: Int?
         let title: String?
         let price: Double?
-        let welcomeDescription: String?
+        let productDescription: String?
         let category: Category?
         let image: String?
         let rating: Rating?
 
         enum CodingKeys: String, CodingKey {
             case id, title, price
-            case welcomeDescription = "description"
+            case productDescription = "description"
             case category, image, rating
         }
     }
@@ -41,4 +41,9 @@ struct ProductFilters {
     var maxValue: Double = 0
     var category: Category = .none
     var rating: Double = 0.0
+}
+extension ProductModel: Equatable {
+    static func == (lhs: ProductModel, rhs: ProductModel) -> Bool {
+        lhs.id == rhs.id
+    }
 }

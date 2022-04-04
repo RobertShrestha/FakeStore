@@ -9,7 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 class ProductsView: UIViewController, Storyboarded, ProductsViewProtocol{
-
     // OUTLETS HERE
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
@@ -24,7 +23,6 @@ class ProductsView: UIViewController, Storyboarded, ProductsViewProtocol{
         self.setupViewModel()
         tableView.registerReusableCell(ProductCellTableViewCell.self)
         addFilterItem()
-        
     }
     func addFilterItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(filterTapped))
@@ -68,5 +66,14 @@ class ProductsView: UIViewController, Storyboarded, ProductsViewProtocol{
                     self.tableView.restore()
                 }
             }).disposed(by: disposeBag)
+        self.tableView
+            .rx
+            .itemSelected
+            .asObservable()
+            .subscribe(onNext: { indexPath in
+                guard let productModel = self.viewModel?.products.value[safe: indexPath.row] else { return }
+                self.coordinator?.goToProductDetail(productModel: productModel, navigatonController: self.navigationController!)
+            })
+            .disposed(by: disposeBag)
     }
 }

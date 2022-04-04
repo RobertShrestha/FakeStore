@@ -20,6 +20,7 @@ class DashboardTabBarCoordinator: Coordinator {
         let dashboardTabController = DashboardTabViewController()
 
         setupTabBarController(dashboardTabController)
+        navigationController.isNavigationBarHidden = true
         navigationController.pushViewController(dashboardTabController, animated: true)
     }
 
@@ -30,6 +31,7 @@ class DashboardTabBarCoordinator: Coordinator {
         searchTabBarItem.title = "Products"
         startNavigationController.tabBarItem = searchTabBarItem
         let productCoordinator = ProductCoordinator(navigationController: startNavigationController)
+        productCoordinator.parenetCoordinator = self
         childCoordinators.append(productCoordinator)
         coordinate(to: productCoordinator)
 
@@ -37,15 +39,17 @@ class DashboardTabBarCoordinator: Coordinator {
         let appointmentTabBarItem = UITabBarItem(title: "Bookmark", image: UIImage(systemName: "bookmark"), tag: 1)
         appointmentTabBarItem.title = "Bookmark"
         frouthNavigation.tabBarItem = appointmentTabBarItem
-        let searchCoordinator = ProductCoordinator(navigationController: frouthNavigation)
-        childCoordinators.append(searchCoordinator)
-        coordinate(to: searchCoordinator)
+        let bookmarkCoordinator = BookmarkCoordinator(navigationController: frouthNavigation)
+        bookmarkCoordinator.parenetCoordinator = self
+        childCoordinators.append(bookmarkCoordinator)
+        coordinate(to: bookmarkCoordinator)
 
         let FifthNavigation = UINavigationController()
         let profileTabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle.fill"), tag: 2)
         profileTabBarItem.title = "Profile"
         FifthNavigation.tabBarItem = profileTabBarItem
-        let profileCoordinator = ProductCoordinator(navigationController: FifthNavigation)
+        let profileCoordinator = ProfileCoordinator(navigationController: FifthNavigation)
+        profileCoordinator.parenetCoordinator = self
         childCoordinators.append(profileCoordinator)
         coordinate(to: profileCoordinator)
 
@@ -67,6 +71,9 @@ class DashboardTabBarCoordinator: Coordinator {
     }
     func didFinishDashboardTab() {
         self.parenetCoordinator?.childDidFinish(self)
+    }
+    func goToLogin() {
+        self.navigationController.popViewController(animated: true)
     }
     /// remove child
     /// - Parameter child: Coordinator

@@ -13,13 +13,9 @@ protocol BaseViewType {
     func alert(message: String?, title: String?, okAction: (() -> Void)?)
     // swiftlint:disable line_length function_parameter_count
     func alertWithOkCancel(message: String?, title: String?, okTitle: String?, cancelTitle: String?, cancelStyle: UIAlertAction.Style, okAction: (() -> Void)?, cancelAction: (() -> Void)?)
-    func alertWithOkCancelForRegistration(phoneNumber: String, okTitle: String?, cancelTitle: String?, cancelStyle: UIAlertAction.Style, okAction: (() -> Void)?, cancelAction: (() -> Void)?)
-    func alertWithOkCancelDefault(title: String, message: String, okTitle: String?, cancelTitle: String?, cancelStyle: UIAlertAction.Style, okAction: (() -> Void)?, cancelAction: (() -> Void)?)
     func popVC()
     func dismiss(completion: (() -> Void)?)
     func presentActivity(activityVC: UIActivityViewController)
-    func showMicSettingsAlert(_ completionHandler: @escaping (_ accessGranted: Bool) -> Void)
-    func showCameraSettingsAlert(_ completionHandler: @escaping (_ accessGranted: Bool) -> Void)
     func alertWithMessageAndTitle(message: String?, title: String?)
     func showShareDialog(withLink linkString: String, title: String, view: UIView)
 }

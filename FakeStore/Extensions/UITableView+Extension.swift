@@ -93,157 +93,6 @@ extension UICollectionView {
 }
 // MARK: - Handle Empty TableView
 extension UITableView {
-    func setEmptyView(title: String, message: String, messageImage: UIImage) {
-        let emptyView = UIView(frame: CGRect(x: self.center.x,
-                                             y: self.center.y,
-                                             width: self.bounds.size.width,
-                                             height: self.bounds.size.height))
-        let messageImageView = UIImageView()
-        let titleLabel = UILabel()
-        let messageLabel = UILabel()
-        messageImageView.backgroundColor = .clear
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageImageView.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textColor = UIColor.black
-        titleLabel.font = FontConstants.setDefaultFont(withFont: .bold, withSize: .small)
-        titleLabel.textColor = ColorConstants.secondary1
-        messageLabel.textColor = UIColor.lightGray
-        messageLabel.font = FontConstants.setDefaultFont(withFont: .regular, withSize: .large)
-        messageLabel.textColor = ColorConstants.secondary2
-        emptyView.addSubview(titleLabel)
-        emptyView.addSubview(messageImageView)
-        emptyView.addSubview(messageLabel)
-        messageImageView.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        messageImageView.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor, constant: 0).isActive = true
-        messageImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        messageImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: messageImageView.topAnchor, constant: -10).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        messageLabel.topAnchor.constraint(equalTo: messageImageView.bottomAnchor, constant: 10).isActive = true
-        messageLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: 10).isActive = true
-        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 10).isActive = true
-        messageImageView.image = messageImage
-        titleLabel.text = title
-        messageLabel.text = message
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
-        self.backgroundView = emptyView
-        self.separatorStyle = .none
-    }
-    func setEmptyViewContactView(title: String,
-                                 message: String,
-                                 buttonTitle: String,
-                                 buttonTapped: (() -> Void)? = nil) {
-        let emptyView = UIView(frame: CGRect(x: self.center.x,
-                                             y: self.center.y,
-                                             width: self.bounds.size.width,
-                                             height: self.bounds.size.height))
-        let titleLabel = HeaderLabel()
-        let messageLabel = SongLabel()
-        let button = PrimaryButton()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        button.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = title
-        titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = .center
-        messageLabel.text = message
-        messageLabel.textAlignment = .center
-        messageLabel.numberOfLines = 0
-        if buttonTapped != nil {
-            button.addAction(action: buttonTapped!)
-        }
-        button.setTitle(buttonTitle, for: .normal)
-        emptyView.addSubview(titleLabel)
-        emptyView.addSubview(messageLabel)
-        emptyView.addSubview(button)
-        button.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        button.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 40).isActive = true
-        button.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -40).isActive = true
-        messageLabel.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = true
-        messageLabel.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -40).isActive = true
-        messageLabel.widthAnchor.constraint(equalTo: button.widthAnchor, constant: 0).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: messageLabel.centerXAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -10).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -10).isActive = true
-        self.backgroundView = emptyView
-        self.separatorStyle = .none
-    }
-    func setEmptyViewChooseAContact(firstButtonTitle: String,
-                                    secondButtonTitle: String,
-                                    message: String,
-                                    title: String,
-                                    firstButtonTapped: (() -> Void)? = nil,
-                                    secondButtonTapped: (() -> Void)? = nil) {
-        let emptyView = UIView(frame: CGRect(x: self.center.x,
-                                             y: self.center.y,
-                                             width: self.bounds.size.width,
-                                             height: self.bounds.size.height))
-        let titleLabel = HeaderLabel()
-        let messageLabel = SongLabel()
-        let firstButton = PrimaryButton()
-        let secondButton = PrimaryButton()
-        let orLabel = HeaderLabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        firstButton.translatesAutoresizingMaskIntoConstraints = false
-        secondButton.translatesAutoresizingMaskIntoConstraints = false
-        orLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = title
-        titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 0
-        messageLabel.text = message
-        messageLabel.textAlignment = .center
-        messageLabel.numberOfLines = 0
-        orLabel.text = Constants.orLabel
-        orLabel.textAlignment = .center
-        if firstButtonTapped != nil {
-            firstButton.addAction(action: firstButtonTapped!)
-        }
-        if secondButtonTapped != nil {
-            secondButton.addAction(action: secondButtonTapped!)
-        }
-        firstButton.setTitle(firstButtonTitle, for: .normal)
-        secondButton.setTitle(secondButtonTitle, for: .normal)
-        emptyView.addSubview(titleLabel)
-        emptyView.addSubview(messageLabel)
-        emptyView.addSubview(firstButton)
-        emptyView.addSubview(secondButton)
-        emptyView.addSubview(orLabel)
-//        if !UserDefaultsConstants.previewShareVisibility {
-//            orLabel.isHidden = true
-//            secondButton.isHidden = true
-//        }
-        firstButton.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        firstButton.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor, constant: -80).isActive = true
-        firstButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        firstButton.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 40).isActive = true
-        firstButton.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -40).isActive = true
-        messageLabel.centerXAnchor.constraint(equalTo: firstButton.centerXAnchor).isActive = true
-        messageLabel.bottomAnchor.constraint(equalTo: firstButton.topAnchor, constant: -40).isActive = true
-        messageLabel.widthAnchor.constraint(equalTo: firstButton.widthAnchor, constant: 0).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: messageLabel.centerXAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -10).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -10).isActive = true
-        orLabel.centerXAnchor.constraint(equalTo: firstButton.centerXAnchor).isActive = true
-        orLabel.topAnchor.constraint(equalTo: firstButton.bottomAnchor, constant: 10).isActive = true
-        orLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        orLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 40).isActive = true
-        orLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -40).isActive = true
-        secondButton.centerXAnchor.constraint(equalTo: firstButton.centerXAnchor).isActive = true
-        secondButton.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 10).isActive = true
-        secondButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        secondButton.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 40).isActive = true
-        secondButton.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -40).isActive = true
-        self.backgroundView = emptyView
-        self.separatorStyle = .none
-    }
     func setEmptySearchViewContactView(title: String,
                                        message: String) {
         let emptyView = UIView(frame: CGRect(x: self.center.x,
@@ -251,7 +100,7 @@ extension UITableView {
                                              width: self.bounds.size.width,
                                              height: self.bounds.size.height))
         let titleLabel = HeaderLabel()
-        let messageLabel = SongLabel()
+        let messageLabel = HeaderLabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = title
@@ -262,76 +111,11 @@ extension UITableView {
         messageLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
         messageLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: messageLabel.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: emptyView.topAnchor, constant: 20).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor, constant: 20).isActive = true
         self.backgroundView = emptyView
         self.separatorStyle = .none
     }
-    func setEmptySearchViewPlaylist(title: String,
-                                    message: String) {
-        let emptyView = UIView(frame: CGRect(x: self.center.x,
-                                             y: self.center.y,
-                                             width: self.bounds.size.width,
-                                             height: self.bounds.size.height))
-        let titleLabel = HeaderLabel()
-        let messageLabel = SongLabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = title
-        titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = .center
-        messageLabel.text = message
-        emptyView.addSubview(titleLabel)
-        emptyView.addSubview(messageLabel)
-        messageLabel.isHidden = true
-        messageLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        messageLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -10).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: messageLabel.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: emptyView.topAnchor, constant: 150).isActive = true
-        self.backgroundView = emptyView
-        self.separatorStyle = .none
-    }
-    func setEmptyStartSearchView(title: String,
-                                 message: String,
-                                 buttonTitle: String,
-                                 buttonTapped: (() -> Void)? = nil) {
-        let emptyView = UIView(frame: CGRect(x: self.center.x,
-                                             y: self.center.y,
-                                             width: self.bounds.size.width,
-                                             height: self.bounds.size.height))
-        let titleLabel = HeaderLabel()
-        let messageLabel = SongLabel()
-        let button = PrimaryButton()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        button.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = title
-        titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = .center
-        messageLabel.text = message
-        emptyView.addSubview(titleLabel)
-        emptyView.addSubview(messageLabel)
-        emptyView.addSubview(button)
-        if buttonTapped != nil {
-            button.addAction(action: buttonTapped!)
-        }
-        button.setTitle(buttonTitle, for: .normal)
-        messageLabel.isHidden = true
-        messageLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        messageLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -10).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: messageLabel.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: emptyView.topAnchor, constant: 150).isActive = true
-        button.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50).isActive = true
-        button.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 40).isActive = true
-        button.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -40).isActive = true
-        self.backgroundView = emptyView
-        self.separatorStyle = .none
-    }
+
     func restore() {
         DispatchQueue.main.async {
             self.backgroundView = nil

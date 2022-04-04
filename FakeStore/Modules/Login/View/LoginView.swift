@@ -22,7 +22,6 @@ class LoginView: UIViewController, Storyboarded,LoginViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViewModel()
-
         self.passwordTextField.text = "m38rmF$"
         self.usernameTextField.text = "johnd"
     }

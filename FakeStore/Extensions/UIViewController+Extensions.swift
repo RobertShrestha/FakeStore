@@ -38,48 +38,6 @@ extension UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    func alertWithOkCancelForRegistration(phoneNumber: String, okTitle: String? = Constants.labelOk, cancelTitle: String? = Constants.cancel, cancelStyle: UIAlertAction.Style = .default, okAction: (() -> Void)? = nil, cancelAction: (() -> Void)? = nil) {
-        DispatchQueue.main.async {
-            let attributeString =  NSMutableAttributedString()
-                .normal("\n" + Constants.sendSMS)
-            let attributeStringForTitle = NSMutableAttributedString()
-                .normalTitle(Constants.isText)
-                .bold(" \(phoneNumber)")
-                .normalTitle("\n" + Constants.correctNumber)
-            let alertController = self.getAlert(message: attributeString.string, title: attributeStringForTitle.string)
-            let okActionNew = UIAlertAction(title: okTitle, style: .default, handler: {_ in
-                okAction?()
-            })
-            alertController.setValue(attributeStringForTitle, forKey: "attributedTitle")
-            alertController.setValue(attributeString, forKey: "attributedMessage")
-            // alertController.setTitlet(font: FontConstants.alertTileBold, color: .red)
-            alertController.addAction(title: cancelTitle, style: cancelStyle, handler: cancelAction)
-            alertController.addAction(okActionNew)
-            alertController.preferredAction = okActionNew
-            alertController.modalPresentationStyle = .fullScreen
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
-    func alertWithOkCancelDefault(title: String, message: String, okTitle: String? = Constants.labelOk, cancelTitle: String? = Constants.cancel, cancelStyle: UIAlertAction.Style = .default, okAction: (() -> Void)? = nil, cancelAction: (() -> Void)? = nil) {
-        DispatchQueue.main.async {
-            let attributeString =  NSMutableAttributedString()
-                .normal(message)
-            let attributeStringForTitle = NSMutableAttributedString()
-                .normalTitle(title)
-            let alertController = self.getAlert(message: attributeString.string, title: attributeStringForTitle.string)
-            let okActionNew = UIAlertAction(title: okTitle, style: .default, handler: {_ in
-                okAction?()
-            })
-            alertController.setValue(attributeStringForTitle, forKey: "attributedTitle")
-            alertController.setValue(attributeString, forKey: "attributedMessage")
-            // alertController.setTitlet(font: FontConstants.alertTileBold, color: .red)
-            alertController.addAction(title: cancelTitle, style: cancelStyle, handler: cancelAction)
-            alertController.addAction(okActionNew)
-            alertController.preferredAction = okActionNew
-            alertController.modalPresentationStyle = .fullScreen
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
     func alertWithOkCancel(message: String?, title: String? = "", okTitle: String? = Constants.labelOk, cancelTitle: String? = Constants.cancel, cancelStyle: UIAlertAction.Style = .default, okAction: (() -> Void)? = nil, cancelAction: (() -> Void)? = nil) {
         DispatchQueue.main.async {
             let alertController = self.getAlert(message: message, title: title)
@@ -155,7 +113,6 @@ extension UIViewController {
     func setNavigationBarRightItems(withTitle title: String, tapped:@escaping ( () -> Void )) {
         let sideMenu = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         sideMenu.setTitle(title, for: .normal)
-        sideMenu.titleLabel?.font = FontConstants.setDefaultFont(withFont: .bold, withSize: .small)
         sideMenu.addAction(action: tapped)
         let sideMenuButtonItem = UIBarButtonItem(customView: sideMenu)
         self.navigationItem.rightBarButtonItems = [sideMenuButtonItem]
@@ -205,50 +162,6 @@ extension UIViewController {
                 })
             }
             alert.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel) { _ in
-                completionHandler(false)
-            })
-            self.present(alert, animated: true)
-        }
-    }
-    /// Show alert to direct to access to setting
-    /// - Parameter completionHandler: Bool if the access is given or not
-    func showMicSettingsAlert(_ completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
-        DispatchQueue.main.async {
-            let message = Constants.settingMicPermission
-            let alert = UIAlertController(title: nil,
-                                          message: message.localized(),
-                                          preferredStyle: .alert)
-            if
-                let settings = URL(string: UIApplication.openSettingsURLString),
-                UIApplication.shared.canOpenURL(settings) {
-                alert.addAction(UIAlertAction(title: "Open Settings".localized(), style: .default) { _ in
-                    completionHandler(true)
-                    UIApplication.shared.open(settings)
-                })
-            }
-            alert.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel) { _ in
-                completionHandler(false)
-            })
-            self.present(alert, animated: true)
-        }
-    }
-    /// Show alert to direct to access to setting
-    /// - Parameter completionHandler: Bool if the access is given or not
-    func showCameraSettingsAlert(_ completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
-        DispatchQueue.main.async {
-            let message = Constants.settingVideoPermission
-            let alert = UIAlertController(title: nil,
-                                          message: message,
-                                          preferredStyle: .alert)
-            if
-                let settings = URL(string: UIApplication.openSettingsURLString),
-                UIApplication.shared.canOpenURL(settings) {
-                alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { _ in
-                    completionHandler(true)
-                    UIApplication.shared.open(settings)
-                })
-            }
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
                 completionHandler(false)
             })
             self.present(alert, animated: true)

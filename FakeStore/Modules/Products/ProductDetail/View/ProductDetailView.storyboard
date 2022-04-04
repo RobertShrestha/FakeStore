@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Product Detail View-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ProductDetailView" id="BYZ-38-t0r" customClass="ProductDetailView" customModule="FakeStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ug0-x9-lR3">
+                                <rect key="frame" x="0.0" y="44" width="390" height="390"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ug0-x9-lR3" secondAttribute="height" multiplier="1:1" id="lB5-KF-JEZ"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lVh-Tr-rzv">
+                                <rect key="frame" x="10" y="444" width="370" height="111.33333333333337"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYs-OA-rQa" customClass="ProductTitleLabel" customModule="FakeStore" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="370" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vma-ch-3I3">
+                                        <rect key="frame" x="0.0" y="30.333333333333314" width="370" height="20.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3c-Zr-Pla" customClass="ProductPriceLabel" customModule="FakeStore" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNU-pF-FVP" customClass="ProductPriceLabel" customModule="FakeStore" customModuleProvider="target">
+                                                <rect key="frame" x="185" y="0.0" width="185" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lJ-kX-9Lo" customClass="ProductRatingLabel" customModule="FakeStore" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60.666666666666693" width="370" height="20.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHr-fZ-y6J" customClass="ProductRatingLabel" customModule="FakeStore" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="91" width="370" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06K-o7-ts3" customClass="OutlineButton" customModule="FakeStore" customModuleProvider="target">
+                                <rect key="frame" x="127.66666666666669" y="565.33333333333337" width="135" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add to bookmark"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ug0-x9-lR3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0OG-V0-bG6"/>
+                            <constraint firstItem="lVh-Tr-rzv" firstAttribute="top" secondItem="Ug0-x9-lR3" secondAttribute="bottom" constant="10" id="5Gl-5C-8Wg"/>
+                            <constraint firstItem="06K-o7-ts3" firstAttribute="top" secondItem="lVh-Tr-rzv" secondAttribute="bottom" constant="10" id="97m-t4-sMC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lVh-Tr-rzv" secondAttribute="trailing" constant="10" id="BGw-7A-E2n"/>
+                            <constraint firstItem="lVh-Tr-rzv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="QdO-j4-Yan"/>
+                            <constraint firstItem="Ug0-x9-lR3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UuW-A1-I9O"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ug0-x9-lR3" secondAttribute="trailing" id="pdf-Pk-SSP"/>
+                            <constraint firstItem="06K-o7-ts3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xjU-D0-PO7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bookmarkButton" destination="06K-o7-ts3" id="FYg-GL-LJR"/>
+                        <outlet property="productCategoryLabel" destination="eNU-pF-FVP" id="BGQ-YM-QeS"/>
+                        <outlet property="productDescriptionLabel" destination="4lJ-kX-9Lo" id="o9n-gs-q6G"/>
+                        <outlet property="productImageView" destination="Ug0-x9-lR3" id="5ok-px-QXa"/>
+                        <outlet property="productPriceLabel" destination="e3c-Zr-Pla" id="L41-Zo-YI8"/>
+                        <outlet property="productRatingLabel" destination="BHr-fZ-y6J" id="mMu-ec-XhB"/>
+                        <outlet property="productTitleLabel" destination="BYs-OA-rQa" id="Wg4-za-EDY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="111"/>
+        </scene>
+    </scenes>
+</document>
